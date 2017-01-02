@@ -1,6 +1,7 @@
 package example.alaa.androidclass;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,8 +56,11 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.Holder> {
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(c.getApplicationContext(), String.valueOf(one_class.get(position).getNumber()), Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(c.getApplicationContext(), String.valueOf(one_class.get(position).getNumber()), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(c.getApplicationContext(), fragmentActivity.class);
+                i.putExtra("number",one_class.get(position).getNumber());
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                c.getApplicationContext().startActivity(i);
             }
         });
     }
