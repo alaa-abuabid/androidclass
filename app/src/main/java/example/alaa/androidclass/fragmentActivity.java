@@ -14,16 +14,25 @@ public class fragmentActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
-        FragmentManager manger = getSupportFragmentManager();
-        FragmentTransaction ft = manger.beginTransaction();
-        BlankFragment framgentblank = new BlankFragment();
-        ft.add(R.id.content,framgentblank);
         Intent i = getIntent();
         int num = i.getExtras().getInt("number");
-
         Bundle bundle = new Bundle();
         bundle.putInt("number", num);
-        framgentblank.setArguments(bundle);
-        ft.commit();
+        FragmentManager manger = getSupportFragmentManager();
+        FragmentTransaction ft = manger.beginTransaction();
+        if(num==8)
+        {
+            AsyncTaskAndPicassoFragment asyncTaskAndPicassoFragment =new AsyncTaskAndPicassoFragment();
+            ft.add(R.id.content, asyncTaskAndPicassoFragment);
+            asyncTaskAndPicassoFragment.setArguments(bundle);
+            ft.commit();
+        }
+        else
+        {
+            ThreeButtonFragment threebuttonfragment = new ThreeButtonFragment();
+            ft.add(R.id.content, threebuttonfragment,"threebuttonfragmentid" );
+            threebuttonfragment.setArguments(bundle);
+            ft.commit();
+        }
     }
 }
