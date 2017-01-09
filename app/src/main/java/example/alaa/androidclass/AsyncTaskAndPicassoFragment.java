@@ -21,23 +21,19 @@ private ImageView AsyncTaskImageView, PicassoImageView ;
     TextView text;
     private String downloadUrl = "https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_960_720.jpg";
 
-
     public AsyncTaskAndPicassoFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_async_picasso, container, false);
-
         text = (TextView) view.findViewById(R.id.text1);
         Bundle bundle = getArguments();
         String number = String.valueOf(bundle.getInt("number"));
         text.setText("class number:"+ number);
-
         AsyncTaskImageView = (ImageView) view.findViewById(R.id.AsyncTaskImage);
         AsyncTaskButton= (Button) view.findViewById(R.id.AsyncTaskButton);
         PicassoImageView = (ImageView) view.findViewById(R.id.PicassoImage);
